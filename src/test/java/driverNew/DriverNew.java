@@ -2,11 +2,7 @@ package driverNew;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DriverNew {
@@ -26,10 +22,6 @@ public class DriverNew {
 		driver.quit();
 	}
 	
-	@Test
-	public void realizaPesquisa() {
-		WebElement search = driver.findElement(By.id("search"));
-		search.sendKeys("fortaleza digital", Keys.ENTER);
-	}
+	
 
 }
