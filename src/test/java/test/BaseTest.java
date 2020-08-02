@@ -9,12 +9,12 @@ public class BaseTest {
 
 
 	@Before
-	public static void openBrowser() {
+	public void openBrowser() {
 		DriverNew.openBrowser("https://lojaexemplod.lojablindada.com");
 	}
 
 	@After
-	public static void closerBrowser() {
+	public void closerBrowser() {
 		DriverNew.closerBrowser();
 	}
 	
