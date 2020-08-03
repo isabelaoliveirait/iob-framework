@@ -1,5 +1,7 @@
 package test;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.List;
 
 import org.junit.Assert;
@@ -27,18 +29,8 @@ public class Test extends BaseTest{
 	@org.junit.Test
 	public void testClickList() {
 		firstPage.setSearch("html", Keys.ENTER);
-		
-			
-		List<WebElement>  elLivros = DriverNew.getDriver().findElements(By.cssSelector("ul.products-grid > li"));
-		for (WebElement elLivro : elLivros) {
-			WebElement tituloLivro = elLivro.findElement(By.cssSelector("h2 > a"));
-			String elTituloLivro = tituloLivro.getText();
-			if (elTituloLivro.contains("Ajax com Java")) {
-				WebElement preco = elLivro.findElement(By.cssSelector("span.price"));
-			//	assertEquals("R$444,50", preco);
-				break;
-			}
-		}
+		String price = firstPage.getPriceList();
+		assertEquals("R$444,50", price);
 	
 	}
 
