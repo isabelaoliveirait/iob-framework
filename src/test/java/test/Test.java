@@ -8,28 +8,27 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import driverNew.DriverNew;
+import pages.FirstPage;
 
 public class Test extends BaseTest{
-
+	
+	FirstPage firstPage = new FirstPage();
 	
 	@org.junit.Test
 	public void realizaPesquisa(){
-		WebElement search = DriverNew.getDriver().findElement(By.id("search"));
-		search.sendKeys("fortaleza digital", Keys.ENTER);
-		WebElement tituloLivro = DriverNew.getDriver().findElement(By.xpath("//h2/a"));
-		String livro = tituloLivro.getText();
-		Assert.assertEquals("[PRODUTO DE EXEMPLO] - Fortaleza Digital", livro);
-		WebElement elPreco = DriverNew.getDriver().findElement(By.cssSelector("#product-price-44 > span"));
-		String preco = elPreco.getText();
-		Assert.assertEquals("R$519,90", preco);
+		firstPage.setSearch("fortaleza digital", Keys.ENTER);
+		String book = firstPage.getTitleBook();
+		Assert.assertEquals("[PRODUTO DE EXEMPLO] - Fortaleza Digital", book);
+		String price = firstPage.getPrice();
+		Assert.assertEquals("R$519,90", price);
 		Thread.currentThread();
 	}
 	
 	@org.junit.Test
 	public void testClickList() {
-		//ul.products-grid > li
-		WebElement search = DriverNew.getDriver().findElement(By.id("search"));
-		search.sendKeys("html", Keys.ENTER);		
+		firstPage.setSearch("html", Keys.ENTER);
+		
+			
 		List<WebElement>  elLivros = DriverNew.getDriver().findElements(By.cssSelector("ul.products-grid > li"));
 		for (WebElement elLivro : elLivros) {
 			WebElement tituloLivro = elLivro.findElement(By.cssSelector("h2 > a"));
